@@ -22,6 +22,14 @@ private void Awake()
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector2.left * MoveSpeed;
+        if (!ObstacleSpawner.instance.gameOver)
+        {
+            rb.velocity = Vector2.left * MoveSpeed;
+        }
+
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
     }
 }
