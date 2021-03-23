@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-Rigidbody2D rb;
-[SerializeField] private float MoveSpeed;
+    Rigidbody2D rb;
+    [SerializeField]
+    private float MoveSpeed;
+    public float offscreenDistance = -15f;
+
 
 private void Awake()
 {
@@ -14,7 +17,7 @@ private void Awake()
 
     void Update()
     {
-        if (transform.position.x < -15f)
+        if (transform.position.x < offscreenDistance)
         {
             Destroy(gameObject);
         }
