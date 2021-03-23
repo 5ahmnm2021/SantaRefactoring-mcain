@@ -19,9 +19,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && !gameOver && !gameOver && !gameOver && grounded)
+        if (Input.GetMouseButton(0) && !gameOver && grounded)
         {
             Jump();
+        }
+
+        if(!gameOver && !grounded && rb.velocity.y <= 0 )
+        {
+            anim.SetBool("Falling", true);
         }
     }
 
@@ -52,6 +57,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            anim.SetTrigger("Land");
+            anim.SetBool("Falling", false);
             grounded = true;
         }
     }
